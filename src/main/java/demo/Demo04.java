@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.function.Consumer;
 
-import jp.ats.atomsql.MultiValues;
+import jp.ats.atomsql.Csv;
 import jp.ats.atomsql.Sandbox;
 import jp.ats.atomsql.annotation.DataObject;
 import jp.ats.atomsql.annotation.Sql;
@@ -17,7 +17,7 @@ public class Demo04 {
 		Sandbox.execute(atomSql -> {
 			var proxy = atomSql.of(Proxy.class);
 
-			var values = new MultiValues<Long>();
+			var values = new Csv<Long>();
 
 			values.add(111L);
 			values.add(222L);
@@ -37,9 +37,9 @@ public class Demo04 {
 	public interface Proxy {
 
 		@Sql("SELECT * FROM customer WHERE id IN (:ids)")
-		List<DataObjectImpl> selectByIds(MultiValues<Long> ids);
+		List<DataObjectImpl> selectByIds(Csv<Long> ids);
 
-		@Sql("SELECT * FROM customer WHERE id IN (:ids/*MULTI_VALUES<LONG>*/) AND name LIKE :name")
+		@Sql("SELECT * FROM customer WHERE id IN (:ids/*CSV<LONG>*/) AND name LIKE :name")
 		@SqlParameters("Demo04Parameters")
 		List<DataObjectImpl> select(Consumer<Demo04Parameters> params);
 
