@@ -11,6 +11,14 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.compiler.release>11</maven.compiler.release>
 	</properties>
+
+	<repositories>
+		<repository>
+		<id>atom-sql</id>
+		<url>https://ats-jp.github.io/atom-sql/</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>jp.ats</groupId>
