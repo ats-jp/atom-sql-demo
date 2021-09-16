@@ -86,7 +86,7 @@ public class Demo05 {
 		Atom<?> nameCondition(String name);
 
 		@Sql("addr1 = :addr1")
-		Atom<?> addr1Condition(long id);
+		Atom<?> addr1Condition(long addr1);
 
 		@Sql("customer_type = 1")
 		Atom<?> customerTypeCondition1();
