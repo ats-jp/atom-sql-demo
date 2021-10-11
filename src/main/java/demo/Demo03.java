@@ -34,19 +34,21 @@ public class Demo03 {
 	@SqlProxy
 	public interface Proxy {
 
-		@Sql("INSERT INTO customer VALUES ("
-			+ ":id/*P_LONG*/, "
-			+ ":name1/*STRING*/, "
-			+ ":name2/*STRING*/, "
-			+ ":companyId/*LONG*/, "
-			+ ":postalCode/*STRING*/, "
-			+ ":addr1/*STRING*/, "
-			+ ":addr2/*STRING*/, "
-			+ ":addr3/*STRING*/, "
-			+ ":tel1/*STRING*/, "
-			+ ":tel2/*STRING*/, "
-			+ ":cellular/*STRING*/, "
-			+ ":created/*TIMESTAMP*/)")
+		@Sql("""
+			INSERT INTO customer VALUES (
+				:id/*P_LONG*/,
+				:name1/*STRING*/,
+				:name2/*STRING*/,
+				:companyId/*LONG*/,
+				:postalCode/*STRING*/,
+				:addr1/*STRING*/,
+				:addr2/*STRING*/,
+				:addr3/*STRING*/,
+				:tel1/*STRING*/,
+				:tel2/*STRING*/,
+				:cellular/*STRING*/,
+				:created/*TIMESTAMP*/)
+						""")
 		@SqlParameters("Demo03Parameters")
 		int insert(Consumer<Demo03Parameters> c);
 	}
