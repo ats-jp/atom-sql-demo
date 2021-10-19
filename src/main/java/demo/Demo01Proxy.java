@@ -35,5 +35,10 @@ public interface Demo01Proxy {
 		public String name;
 
 		public Timestamp created;
+
+		@Override
+		public String toString() {
+			return DataObjectImpl.class.getSimpleName() + " [id: " + id + ", name: " + name + ", created: " + created + "]";
+		}
 	}
 }
