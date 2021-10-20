@@ -27,6 +27,11 @@ public interface Demo01Proxy {
 	@Sql("INSERT INTO customer (id, name, created) VALUES (:id, :name, :created)")
 	int insert(long id, String name, Timestamp created);
 
+	//defaultは対象外
+	default int testDefault() {
+		return 0;
+	}
+
 	@DataObject
 	public static class DataObjectImpl {
 
