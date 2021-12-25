@@ -6,13 +6,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import jp.ats.atomsql.Sandbox;
+import jp.ats.atomsql.SimpleConfigure;
 
 public class Demo01 {
 
 	static final Logger logger = LoggerFactory.getLogger(Demo01.class);
 
 	public static void main(String[] args) throws Exception {
-		Sandbox.execute(atomSql -> {
+		Sandbox.execute(new SimpleConfigure(false, null), atomSql -> {
 			var proxy = atomSql.of(Demo01Proxy.class);
 
 			Sandbox.resultSet(r -> {

@@ -40,7 +40,7 @@ public class Demo05 {
 		boolean type2,
 		boolean type3,
 		boolean useUpdated) {
-		var condition = proxy.blank();
+		var condition = Atom.BLANK;
 
 		if (id != null)
 			condition = condition.and(proxy.idCondition(id));
@@ -48,7 +48,7 @@ public class Demo05 {
 		if (name != null)
 			condition = condition.and(proxy.nameCondition(name));
 
-		var typeCondition = proxy.blank();
+		var typeCondition = Atom.BLANK;
 
 		if (type1)
 			typeCondition = typeCondition.or(proxy.customerTypeCondition1());
@@ -64,7 +64,7 @@ public class Demo05 {
 		if (useUpdated)
 			condition = condition.and(proxy.updatedCondition());
 
-		return !condition.isEmpty() ? proxy.main().concat(proxy.where()).concat(condition) : proxy.main();
+		return !condition.isEmpty() ? proxy.main().join(Atom.WHERE, condition) : proxy.main();
 	}
 
 	@SqlProxy
@@ -72,12 +72,6 @@ public class Demo05 {
 
 		@Sql("SELECT * FROM customer")
 		Atom<DataObjectImpl> main();
-
-		@Sql("")
-		Atom<?> blank();
-
-		@Sql("WHERE")
-		Atom<?> where();
 
 		@Sql("id = :id")
 		Atom<?> idCondition(Long id);
