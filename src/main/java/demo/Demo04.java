@@ -1,6 +1,7 @@
 package demo;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -17,12 +18,14 @@ public class Demo04 {
 		Sandbox.execute(atomSql -> {
 			var proxy = atomSql.of(Proxy.class);
 
-			var values = new Csv<Long>();
+			var list = new ArrayList<Long>();
 
-			values.add(111L);
-			values.add(222L);
-			values.add(333L);
-			values.add(444L);
+			list.add(111L);
+			list.add(222L);
+			list.add(333L);
+			list.add(444L);
+
+			var values = new Csv<>(list);
 
 			proxy.selectByIds(values);
 

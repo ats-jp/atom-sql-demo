@@ -64,7 +64,7 @@ public class Demo05 {
 		if (useUpdated)
 			condition = condition.and(proxy.updatedCondition());
 
-		return !condition.isEmpty() ? proxy.main().join(Atom.WHERE, condition) : proxy.main();
+		return !condition.isEmpty() ? proxy.main().concat(Atom.WHERE, condition) : proxy.main();
 	}
 
 	@SqlProxy
