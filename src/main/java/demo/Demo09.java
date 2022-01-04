@@ -3,6 +3,7 @@ package demo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.List;
 
 import jp.ats.atomsql.Atom;
 import jp.ats.atomsql.Sandbox;
@@ -20,7 +21,7 @@ public class Demo09 {
 		Sandbox.execute(atomSql -> {
 			var proxy = atomSql.of(Proxy.class);
 
-			proxy.select().concat(WHERE, CONDITION).list();
+			proxy.list();
 		});
 	}
 
@@ -39,6 +40,10 @@ public class Demo09 {
 
 		@Sql("SELECT * FROM customer")
 		Atom<DataObjectImpl> select();
+
+		default List<DataObjectImpl> list() {
+			return select().concat(WHERE, CONDITION).list();
+		}
 	}
 
 	@DataObject
