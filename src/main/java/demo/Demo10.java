@@ -4,11 +4,12 @@ import java.sql.Timestamp;
 import java.util.function.Consumer;
 
 import jp.ats.atomsql.Sandbox;
+import jp.ats.atomsql.annotation.ConfidentialSql;
 import jp.ats.atomsql.annotation.Sql;
 import jp.ats.atomsql.annotation.SqlParameters;
 import jp.ats.atomsql.annotation.SqlProxy;
 
-public class Demo03 {
+public class Demo10 {
 
 	public static void main(String[] args) throws Exception {
 		Sandbox.execute(atomSql -> {
@@ -34,6 +35,7 @@ public class Demo03 {
 	@SqlProxy
 	public interface Proxy {
 
+		@ConfidentialSql({ "addr1", "tel1" })
 		@Sql(/*@formatter:off*/"""
 INSERT INTO customer VALUES (
 	:id/*P_LONG*/,
@@ -49,7 +51,7 @@ INSERT INTO customer VALUES (
 	:cellular/*STRING*/,
 	:created/*TIMESTAMP*/)
 		"""/*@formatter:on*/)
-		@SqlParameters("Demo03Parameters")
-		int insert(Consumer<Demo03Parameters> c);
+		@SqlParameters("Demo10Parameters")
+		int insert(Consumer<Demo10Parameters> c);
 	}
 }
