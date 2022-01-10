@@ -40,7 +40,7 @@ public class Demo11 {
 				p.companyId = null;
 				p.postalCode = "000-0000";
 				p.created = new Timestamp(System.currentTimeMillis());
-			}).replace(addrAndTel).update();
+			}).format(addrAndTel).update();
 		});
 	}
 
