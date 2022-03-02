@@ -1,6 +1,6 @@
 package demo;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -44,6 +44,6 @@ public class Demo06 {
 	}
 
 	@DataObject
-	public record DataObjectImpl(long id, String name, Timestamp created) {
+	public record DataObjectImpl(long id, String name, LocalDateTime created) {
 	}
 }

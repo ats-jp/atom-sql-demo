@@ -1,6 +1,6 @@
 package demo;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import jp.ats.atomsql.Atom;
 import jp.ats.atomsql.Sandbox;
@@ -101,7 +101,7 @@ public class Demo05 {
 
 			public String name;
 
-			public Timestamp created;
+			public LocalDateTime created;
 		}
 	}
 }

@@ -1,6 +1,6 @@
 package demo;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.function.Consumer;
 
 import jp.ats.atomsql.Atom;
@@ -21,7 +21,7 @@ public class Demo11 {
 				p.name2 = "name2";
 				p.companyId = null;
 				p.postalCode = "000-0000";
-				p.created = new Timestamp(System.currentTimeMillis());
+				p.created = LocalDateTime.now();
 			}).update();
 
 			var addrAndTel = proxy.addrAndTel(p -> {
@@ -31,6 +31,7 @@ public class Demo11 {
 				p.tel1 = "00-000-0000";
 				p.tel2 = "00-000-0000";
 				p.cellular = "090-0000-0000";
+				p.マルチバイト文字 = "OK";
 			});
 
 			proxy.update(p -> {
@@ -39,7 +40,7 @@ public class Demo11 {
 				p.name2 = "name2";
 				p.companyId = null;
 				p.postalCode = "000-0000";
-				p.created = new Timestamp(System.currentTimeMillis());
+				p.created = LocalDateTime.now();
 			}).format(addrAndTel).update();
 		});
 	}
@@ -55,7 +56,7 @@ UPDATE customer SET
 	company_id = :companyId/*LONG*/,
 	postal_code = :postalCode/*STRING*/,
 	/*[0]*/
-	created = :created/*TIMESTAMP*/)
+	created = :created/*DATETIME*/)
 		"""/*@formatter:on*/)
 		@SqlParameters("Demo11ParametersMain")
 		Atom<?> update(Consumer<Demo11ParametersMain> c);
@@ -68,6 +69,7 @@ UPDATE customer SET
 	tel1 = :tel1/*STRING*/,
 	tel2 = :tel2/*STRING*/,
 	cellular = :cellular/*STRING*/,
+	memo = :マルチバイト文字/*STRING*/,
 		"""/*@formatter:on*/)
 		@SqlParameters("Demo11ParametersSub")
 		Atom<?> addrAndTel(Consumer<Demo11ParametersSub> c);

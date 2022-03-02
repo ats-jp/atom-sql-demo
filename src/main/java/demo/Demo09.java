@@ -2,7 +2,7 @@ package demo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import jp.ats.atomsql.Atom;
@@ -53,12 +53,12 @@ public class Demo09 {
 
 		public final String name;
 
-		public final Timestamp created;
+		public final LocalDateTime created;
 
 		public DataObjectImpl(ResultSet result) throws SQLException {
 			id = result.getLong("id");
 			name = result.getString("name");
-			created = result.getTimestamp("created");
+			created = result.getTimestamp("created").toLocalDateTime();
 		}
 	}
 }

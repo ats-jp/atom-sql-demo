@@ -1,6 +1,6 @@
 package demo;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -25,7 +25,7 @@ public class Demo02 {
 
 			proxy.selectById(999);
 
-			proxy.insert(999, "demo customer", new Timestamp(System.currentTimeMillis()));
+			proxy.insert(999, "demo customer", LocalDateTime.now());
 		});
 	}
 
@@ -44,7 +44,7 @@ public class Demo02 {
 		Atom<DataObjectImpl> selectAsAtom();
 
 		@Sql("INSERT INTO customer (id, name, created) VALUES (:id, :name, :created)")
-		int insert(long id, String name, Timestamp created);
+		int insert(long id, String name, LocalDateTime created);
 
 		@DataObject
 		public static class DataObjectImpl {
@@ -53,7 +53,7 @@ public class Demo02 {
 
 			public String name;
 
-			public Timestamp created;
+			public LocalDateTime created;
 		}
 	}
 }

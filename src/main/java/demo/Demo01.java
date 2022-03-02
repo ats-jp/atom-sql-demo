@@ -16,11 +16,14 @@ public class Demo01 {
 		Sandbox.execute(new SimpleConfigure(false, null)/*SQLログを出力しないように設定*/, atomSql -> {
 			var proxy = atomSql.of(Demo01Proxy.class);
 
+			var now = new Timestamp(System.currentTimeMillis());
+
 			Sandbox.resultSet(r -> {
 				r.setColumnNames("id", "name", "created");
-				r.addRow(1L, "name1", new Timestamp(System.currentTimeMillis()));
-				r.addRow(2L, "name2", new Timestamp(System.currentTimeMillis()));
-				r.addRow(3L, "name3", new Timestamp(System.currentTimeMillis()));
+
+				r.addRow(1L, "name1", now);
+				r.addRow(2L, "name2", now);
+				r.addRow(3L, "name3", now);
 			});
 
 			proxy.selectAsList().forEach(Demo01::log);
@@ -31,12 +34,12 @@ public class Demo01 {
 
 			Sandbox.resultSet(r -> {
 				r.setColumnNames("id", "name", "created");
-				r.addRow(1L, "name1", new Timestamp(System.currentTimeMillis()));
+				r.addRow(1L, "name1", now);
 			});
 
 			proxy.selectById(999).ifPresent(Demo01::log);
 
-			proxy.insert(999, "demo customer", new Timestamp(System.currentTimeMillis()));
+			proxy.insert(999, "demo customer", now.toLocalDateTime());
 		});
 	}
 

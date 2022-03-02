@@ -1,6 +1,6 @@
 package demo;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.function.Consumer;
 
 import jp.ats.atomsql.Sandbox;
@@ -27,7 +27,7 @@ public class Demo10 {
 				p.tel1 = "00-000-0000";
 				p.tel2 = "00-000-0000";
 				p.cellular = "090-0000-0000";
-				p.created = new Timestamp(System.currentTimeMillis());
+				p.created = LocalDateTime.now();
 			});
 		});
 	}
@@ -49,7 +49,7 @@ INSERT INTO customer VALUES (
 	:tel1/*STRING*/,
 	:tel2/*STRING*/,
 	:cellular/*STRING*/,
-	:created/*TIMESTAMP*/)
+	:created/*DATETIME*/)
 		"""/*@formatter:on*/)
 		@SqlParameters("Demo10Parameters")
 		int insert(Consumer<Demo10Parameters> c);

@@ -1,6 +1,6 @@
 package demo;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -25,7 +25,7 @@ public interface Demo01Proxy {
 	Atom<DataObjectImpl> selectAsAtom();
 
 	@Sql("INSERT INTO customer (id, name, created) VALUES (:id, :name, :created)")
-	int insert(long id, String name, Timestamp created);
+	int insert(long id, String name, LocalDateTime created);
 
 	//defaultは対象外
 	default int testDefault() {
@@ -39,7 +39,7 @@ public interface Demo01Proxy {
 
 		public String name;
 
-		public Timestamp created;
+		public LocalDateTime created;
 
 		@Override
 		public String toString() {

@@ -1,6 +1,6 @@
 package demo;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -53,7 +53,7 @@ public class Demo04 {
 
 			public String name;
 
-			public Timestamp created;
+			public LocalDateTime created;
 		}
 	}
 }
