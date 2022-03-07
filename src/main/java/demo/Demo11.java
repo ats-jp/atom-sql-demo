@@ -41,7 +41,7 @@ public class Demo11 {
 				p.companyId = null;
 				p.postalCode = "000-0000";
 				p.created = LocalDateTime.now();
-			}).format(addrAndTel).update();
+			}).inject(addrAndTel).update();
 		});
 	}
 
