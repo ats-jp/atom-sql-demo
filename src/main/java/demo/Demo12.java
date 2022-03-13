@@ -67,7 +67,7 @@ INSERT INTO customer VALUES (
 	:cellular/*STRING*/,
 	:created/*DATETIME*/)
 		"""/*@formatter:on*/)
-		@SqlParameters("Demo12Parameters")
+		@SqlParameters
 		int insert(Consumer<Demo12Parameters> c);
 
 		@AtomSqlSupplier

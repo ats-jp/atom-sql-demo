@@ -43,7 +43,7 @@ public class Demo04 {
 		List<DataObjectImpl> selectByIds(Csv<Long> ids);
 
 		@Sql("SELECT * FROM customer WHERE id IN (:ids/*CSV<LONG>*/) AND name LIKE :name")
-		@SqlParameters("Demo04Parameters")
+		@SqlParameters
 		List<DataObjectImpl> select(Consumer<Demo04Parameters> params);
 
 		@DataObject

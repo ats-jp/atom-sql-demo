@@ -49,7 +49,7 @@ INSERT INTO customer VALUES (
 	:cellular/*STRING*/,
 	:created/*DATETIME*/)
 		"""/*@formatter:on*/)
-		@SqlParameters("Demo03Parameters")
+		@SqlParameters
 		int insert(Consumer<Demo03Parameters> c);
 	}
 }

@@ -51,7 +51,7 @@ INSERT INTO customer VALUES (
 	:cellular/*STRING*/,
 	:created/*DATETIME*/)
 		"""/*@formatter:on*/)
-		@SqlParameters("Demo10Parameters")
-		int insert(Consumer<Demo10Parameters> c);
+		@SqlParameters
+		int insert(Consumer<Demo10_Proxy_insert> c);
 	}
 }

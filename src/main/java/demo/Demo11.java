@@ -41,7 +41,7 @@ public class Demo11 {
 				p.companyId = null;
 				p.postalCode = "000-0000";
 				p.created = LocalDateTime.now();
-			}).inject(addrAndTel).update();
+			}).put(addrAndTel).update();
 		});
 	}
 
@@ -58,7 +58,7 @@ UPDATE customer SET
 	/*[0]*/
 	created = :created/*DATETIME*/)
 		"""/*@formatter:on*/)
-		@SqlParameters("Demo11ParametersMain")
+		@SqlParameters
 		Atom<?> update(Consumer<Demo11ParametersMain> c);
 
 		@Sql(/*@formatter:off*/"""
@@ -71,7 +71,7 @@ UPDATE customer SET
 	cellular = :cellular/*STRING*/,
 	memo = :マルチバイト文字/*STRING*/,
 		"""/*@formatter:on*/)
-		@SqlParameters("Demo11ParametersSub")
+		@SqlParameters
 		Atom<?> addrAndTel(Consumer<Demo11ParametersSub> c);
 	}
 }
