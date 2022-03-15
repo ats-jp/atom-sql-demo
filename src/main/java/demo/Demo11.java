@@ -55,7 +55,7 @@ UPDATE customer SET
 	name2 = :name2/*STRING*/,
 	company_id = :companyId/*LONG*/,
 	postal_code = :postalCode/*STRING*/,
-	/*[0]*/
+	/*${0}*/
 	created = :created/*DATETIME*/)
 		"""/*@formatter:on*/)
 		@SqlParameters
