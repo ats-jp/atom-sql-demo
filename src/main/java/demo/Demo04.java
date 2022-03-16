@@ -18,21 +18,50 @@ public class Demo04 {
 		Sandbox.execute(atomSql -> {
 			var proxy = atomSql.of(Proxy.class);
 
-			var list = new ArrayList<Long>();
+			{
+				var list = new ArrayList<Long>();
 
-			list.add(111L);
-			list.add(222L);
-			list.add(333L);
-			list.add(444L);
+				list.add(111L);
+				list.add(222L);
+				list.add(333L);
 
-			var values = new Csv<>(list);
+				var values = new Csv<>(list);
 
-			proxy.selectByIds(values);
+				proxy.selectByIds(values);
 
-			proxy.select(p -> {
-				p.ids = values;
-				p.name = "%name%";
-			});
+				proxy.select(p -> {
+					p.ids = values;
+					p.name = "%name%";
+				});
+			}
+
+			{
+				var list = new ArrayList<Long>();
+
+				list.add(444L);
+				list.add(555L);
+				list.add(666L);
+
+				var values = new Csv<>(list.stream());
+
+				proxy.selectByIds(values);
+
+				proxy.select(p -> {
+					p.ids = values;
+					p.name = "%name%";
+				});
+			}
+
+			{
+				var values = new Csv<>(777L, 888L, 999L);
+
+				proxy.selectByIds(values);
+
+				proxy.select(p -> {
+					p.ids = values;
+					p.name = "%name%";
+				});
+			}
 		});
 	}
 
