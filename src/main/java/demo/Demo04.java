@@ -25,7 +25,7 @@ public class Demo04 {
 				list.add(222L);
 				list.add(333L);
 
-				var values = new Csv<>(list);
+				var values = Csv.of(list);
 
 				proxy.selectByIds(values);
 
@@ -42,7 +42,7 @@ public class Demo04 {
 				list.add(555L);
 				list.add(666L);
 
-				var values = new Csv<>(list.stream());
+				var values = Csv.of(list.stream());
 
 				proxy.selectByIds(values);
 
@@ -53,7 +53,7 @@ public class Demo04 {
 			}
 
 			{
-				var values = new Csv<>(777L, 888L, 999L);
+				var values = Csv.of(777L, 888L, 999L);
 
 				proxy.selectByIds(values);
 
