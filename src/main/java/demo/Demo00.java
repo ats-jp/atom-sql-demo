@@ -1,10 +1,10 @@
 package demo;
 
-import jp.ats.atomsql.Utils;
+import jp.ats.atomsql.AtomSqlUtils;
 
 public class Demo00 {
 
 	public static void main(String[] args) throws Exception {
-		Utils.loadProxyClasses().forEach(System.out::println);
+		AtomSqlUtils.loadProxyClasses().forEach(System.out::println);
 	}
 }

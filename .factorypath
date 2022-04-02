@@ -1,4 +1,4 @@
 <factorypath>
     <factorypathentry kind="PLUGIN" id="org.eclipse.jst.ws.annotations.core" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/jp/ats/atom-sql/0.3.27/atom-sql-0.3.27.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/jp/ats/atom-sql/0.3.28/atom-sql-0.3.28.jar" enabled="true" runInBatchMode="false"/>
 </factorypath>
