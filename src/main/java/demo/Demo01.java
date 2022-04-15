@@ -13,7 +13,7 @@ public class Demo01 {
 	static final Logger logger = LoggerFactory.getLogger(Demo01.class);
 
 	public static void main(String[] args) throws Exception {
-		Sandbox.execute(new SimpleConfigure(false, null)/*SQLログを出力しないように設定*/, atomSql -> {
+		Sandbox.execute(new SimpleConfigure(false, null, false)/*SQLログを出力しないように設定*/, atomSql -> {
 			var proxy = atomSql.of(Demo01Proxy.class);
 
 			var now = new Timestamp(System.currentTimeMillis());

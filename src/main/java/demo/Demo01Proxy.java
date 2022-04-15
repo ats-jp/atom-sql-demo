@@ -19,7 +19,7 @@ public interface Demo01Proxy {
 	Stream<DataObjectImpl> selectAsStream();
 
 	@Sql("SELECT * FROM customer WHERE id = :id")
-	Optional<DataObjectImpl> selectById(long id);
+	Optional<DataObjectRecord> selectById(long id);
 
 	@Sql("SELECT * FROM customer")
 	Atom<DataObjectImpl> selectAsAtom();
@@ -39,7 +39,16 @@ public interface Demo01Proxy {
 
 		public String name;
 
-		public LocalDateTime created;
+		public Optional<LocalDateTime> created;
+
+		@Override
+		public String toString() {
+			return DataObjectImpl.class.getSimpleName() + " [id: " + id + ", name: " + name + ", created: " + created + "]";
+		}
+	}
+
+	@DataObject
+	public static record DataObjectRecord(long id, String name, Optional<LocalDateTime> created) {
 
 		@Override
 		public String toString() {

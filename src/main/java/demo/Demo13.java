@@ -1,6 +1,7 @@
 package demo;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import jp.ats.atomsql.Atom;
 import jp.ats.atomsql.Sandbox;
@@ -34,6 +35,6 @@ public class Demo13 {
 
 		public String name;
 
-		public LocalDateTime created;
+		public Optional<LocalDateTime> created;
 	}
 }
