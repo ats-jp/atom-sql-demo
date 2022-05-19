@@ -6,12 +6,18 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import jp.ats.atomsql.Atom;
+import jp.ats.atomsql.AtomSql;
 import jp.ats.atomsql.Sandbox;
 import jp.ats.atomsql.annotation.DataObject;
 import jp.ats.atomsql.annotation.Sql;
 import jp.ats.atomsql.annotation.SqlProxy;
 
 public class Demo09 {
+
+	static {
+		//先に初期化が必要
+		AtomSql.initialize();
+	}
 
 	private static Atom<?> WHERE = Atom.newStaticInstance(a -> a.of(ProxyForStatic.class).where());
 
