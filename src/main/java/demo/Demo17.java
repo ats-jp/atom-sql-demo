@@ -3,6 +3,7 @@ package demo;
 import java.util.function.Consumer;
 
 import jp.ats.atomsql.AtomSql;
+import jp.ats.atomsql.AtomSqlType;
 import jp.ats.atomsql.Csv;
 import jp.ats.atomsql.Sandbox;
 import jp.ats.atomsql.annotation.AtomSqlSupplier;
@@ -37,9 +38,9 @@ public class Demo17 {
 
 		@Sql("UPDATE customer SET name = :name WHERE id IN (:ids) AND name IN (:names)")
 		@SqlParameters(typeHints = {
-			@TypeHint(name = "name", type = "STRING"),
-			@TypeHint(name = "ids", type = "CSV", typeArgument = "P_LONG"),
-			@TypeHint(name = "names", type = "CSV", typeArgument = "STRING")
+			@TypeHint(name = "name", type = AtomSqlType.STRING),
+			@TypeHint(name = "ids", type = AtomSqlType.CSV, typeArgument = AtomSqlType.P_LONG),
+			@TypeHint(name = "names", type = AtomSqlType.CSV, typeArgument = AtomSqlType.STRING)
 		})
 
 		int insert(Consumer<Demo17Parameters> c);

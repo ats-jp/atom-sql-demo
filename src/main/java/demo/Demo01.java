@@ -1,7 +1,6 @@
 package demo;
 
 import java.sql.Timestamp;
-import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +13,7 @@ public class Demo01 {
 	static final Logger logger = LoggerFactory.getLogger(Demo01.class);
 
 	public static void main(String[] args) throws Exception {
-		Sandbox.execute(new SimpleConfigure(false, null, false, Optional.empty())/*SQLログを出力しないように設定*/, atomSql -> {
+		Sandbox.execute(new SimpleConfigure(false, null, false, null)/*SQLログを出力しないように設定*/, atomSql -> {
 			var proxy = atomSql.of(Demo01Proxy.class);
 
 			var now = new Timestamp(System.currentTimeMillis());
