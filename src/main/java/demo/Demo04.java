@@ -3,6 +3,7 @@ package demo;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 
 import jp.ats.atomsql.Csv;
@@ -76,13 +77,7 @@ public class Demo04 {
 		List<DataObjectImpl> select(Consumer<Demo04Parameters> params);
 
 		@DataObject
-		public static class DataObjectImpl {
-
-			public long id;
-
-			public String name;
-
-			public LocalDateTime created;
+		public static record DataObjectImpl(long id, Optional<String> name, LocalDateTime created) {
 		}
 	}
 }

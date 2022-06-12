@@ -13,7 +13,7 @@ public class Demo14 {
 
 			var main = proxy.insert();
 
-			main.put(proxy.for0(), proxy.for1(), proxy.for2()).update();
+			main.put(proxy.for0(), proxy.for1()).put("last", proxy.forLast()).update();
 		});
 	}
 
@@ -24,7 +24,7 @@ public class Demo14 {
 INSERT INTO customer VALUES (
 /*${0}*/,
 /*${1}*/,
-/*${2}*/
+/*${last}*/
 )
 		"""/*@formatter:on*/)
 		Atom<?> insert();
@@ -36,6 +36,6 @@ INSERT INTO customer VALUES (
 		Atom<?> for1();
 
 		@Sql("created_at")
-		Atom<?> for2();
+		Atom<?> forLast();
 	}
 }
