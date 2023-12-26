@@ -9,6 +9,7 @@ import jp.ats.atomsql.Atom;
 import jp.ats.atomsql.Sandbox;
 import jp.ats.atomsql.annotation.DataObject;
 import jp.ats.atomsql.annotation.Sql;
+import jp.ats.atomsql.annotation.SqlFile;
 import jp.ats.atomsql.annotation.SqlProxy;
 
 public class Demo02 {
@@ -35,6 +36,7 @@ public class Demo02 {
 		@Sql("SELECT * FROM customer")
 		List<DataObjectImpl> selectAsList();
 
+		@SqlFile
 		Stream<DataObjectImpl> selectAsStream();
 
 		@Sql("SELECT * FROM customer WHERE id = :id")

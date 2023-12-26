@@ -13,7 +13,7 @@ public class Demo01 {
 	static final Logger logger = LoggerFactory.getLogger(Demo01.class);
 
 	public static void main(String[] args) throws Exception {
-		Sandbox.execute(new SimpleConfigure(false, null, false, null)/*SQLログを出力しないように設定*/, atomSql -> {
+		Sandbox.execute(new SimpleConfigure(false, null, false, false, null, 0)/*SQLログを出力しないように設定*/, atomSql -> {
 			var proxy = atomSql.of(Demo01Proxy.class);
 
 			var now = new Timestamp(System.currentTimeMillis());
@@ -29,6 +29,8 @@ public class Demo01 {
 			proxy.selectAsList().forEach(Demo01::log);
 
 			proxy.selectAsStream().forEach(Demo01::log);
+
+			proxy.selectAsStreamWithFileName().forEach(Demo01::log);
 
 			proxy.selectAsAtom().stream().forEach(Demo01::log);
 

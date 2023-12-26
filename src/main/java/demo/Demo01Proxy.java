@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 import jp.ats.atomsql.Atom;
 import jp.ats.atomsql.annotation.DataObject;
 import jp.ats.atomsql.annotation.Sql;
+import jp.ats.atomsql.annotation.SqlFile;
 import jp.ats.atomsql.annotation.SqlProxy;
 
 @SqlProxy
@@ -16,7 +17,11 @@ public interface Demo01Proxy {
 	@Sql("SELECT * FROM customer")
 	List<DataObjectImpl> selectAsList();
 
+	@SqlFile
 	Stream<DataObjectImpl> selectAsStream();
+
+	@SqlFile("test.sql")
+	Stream<DataObjectImpl> selectAsStreamWithFileName();
 
 	@Sql("SELECT * FROM customer WHERE id = :id")
 	Optional<DataObjectRecord> selectById(long id);
