@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>jp.ats</groupId>
 	<artifactId>atom-sql-demo</artifactId>
-	<version>0.4.19</version>
+	<version>0.4.20</version>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -14,8 +14,8 @@
 
 	<repositories>
 		<repository>
-		<id>atom-sql</id>
-		<url>https://ats-jp.github.io/atom-sql/</url>
+			<id>atom-sql</id>
+			<url>https://ats-jp.github.io/atom-sql/</url>
 		</repository>
 	</repositories>
 
@@ -23,19 +23,24 @@
 		<dependency>
 			<groupId>jp.ats</groupId>
 			<artifactId>atom-sql</artifactId>
-			<version>0.4.19</version>
+			<version>0.5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-jdk-platform-logging</artifactId>
+			<version>2.0.9</version>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.2.5</version>
+			<version>1.4.14</version>
 		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>3.12.1</version>
 				<configuration>
 					<release>${maven.compiler.release}</release>
 					<encoding>${project.build.sourceEncoding}</encoding>
