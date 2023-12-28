@@ -42,8 +42,7 @@ public class Demo17 {
 			@TypeHint(name = "ids", type = AtomSqlType.CSV, typeArgument = AtomSqlType.P_LONG),
 			@TypeHint(name = "names", type = AtomSqlType.CSV, typeArgument = AtomSqlType.STRING)
 		})
-
-		int insert(Consumer<Demo17Parameters> c);
+		void insert(Consumer<Demo17Parameters> c);
 
 		@AtomSqlSupplier
 		AtomSql atomSql();
