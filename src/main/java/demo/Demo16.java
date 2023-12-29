@@ -11,7 +11,7 @@ import jp.ats.atomsql.annotation.Sql;
 import jp.ats.atomsql.annotation.SqlInterpolation;
 import jp.ats.atomsql.annotation.SqlProxy;
 
-class Demo16 {
+public class Demo16 {
 
 	public static void main(String[] args) throws Exception {
 		Sandbox.execute(atomSql -> {
