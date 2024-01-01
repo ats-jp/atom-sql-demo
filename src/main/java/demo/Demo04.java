@@ -72,12 +72,11 @@ public class Demo04 {
 		@Sql("SELECT * FROM customer WHERE id IN (:ids)")
 		List<DataObjectImpl> selectByIds(Csv<Long> ids);
 
-		@Sql("SELECT * FROM customer WHERE id IN (:ids/*CSV<LONG>*/) AND name LIKE :name")
+		@Sql("SELECT * FROM customer WHERE id IN (:ids/*CSV<LONG>*/) AND name LIKE :name/*STRING*/")
 		@SqlParameters
 		List<DataObjectImpl> select(Consumer<Demo04Parameters> params);
 
 		@DataObject
-		public static record DataObjectImpl(long id, Optional<String> name, LocalDateTime created) {
-		}
+		public static record DataObjectImpl(long id, Optional<String> name, LocalDateTime created) {}
 	}
 }
