@@ -74,7 +74,11 @@ public class Demo04 {
 
 		@Sql("SELECT * FROM customer WHERE id IN (:ids/*CSV<LONG>*/) AND name LIKE :name/*STRING*/")
 		@SqlParameters
-		List<DataObjectImpl> select(Consumer<Demo04Parameters> params);
+		List<DataObjectImpl> select(Consumer<Demo04Parameters1> params);
+
+		@Sql("SELECT * FROM customer WHERE id IN (:ids) AND name LIKE :name")
+		@SqlParameters
+		List<DataObjectImpl> dynamicTypeDecision(Consumer<Demo04Parameters2> params);
 
 		@DataObject
 		public static record DataObjectImpl(long id, Optional<String> name, LocalDateTime created) {}
