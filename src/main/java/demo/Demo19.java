@@ -9,9 +9,9 @@ import jp.ats.atomsql.Sandbox;
 import jp.ats.atomsql.annotation.DataObject;
 import jp.ats.atomsql.annotation.EnumValue;
 import jp.ats.atomsql.annotation.Sql;
-import jp.ats.atomsql.annotation.SqlParameters;
 import jp.ats.atomsql.annotation.SqlProxy;
 import jp.ats.atomsql.annotation.TypeHint;
+import jp.ats.atomsql.annotation.TypeHints;
 
 public class Demo19 {
 
@@ -84,15 +84,13 @@ public class Demo19 {
 		List<DataObjectImpl> selectByCsv(Csv<Enum1> types);
 
 		@Sql("SELECT * FROM customer WHERE type = :type/*Demo19.Enum1*/")
-		@SqlParameters
 		List<DataObjectImpl> selectByParameters(Consumer<Demo19_P1> c);
 
 		@Sql("SELECT * FROM customer WHERE type IN (:types/*CSV<Demo19.Enum1>*/)")
-		@SqlParameters
 		List<DataObjectImpl> selectByCsv(Consumer<Demo19_P2> c);
 
 		@Sql("SELECT * FROM customer WHERE type = :type AND csv IN :csv")
-		@SqlParameters(typeHints = {
+		@TypeHints({
 			@TypeHint(name = "type", type = "Demo19.Enum1"),
 			@TypeHint(name = "csv", type = "CSV", typeArgument = "Demo19.Enum1"),
 		})

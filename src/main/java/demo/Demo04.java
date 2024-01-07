@@ -10,7 +10,6 @@ import jp.ats.atomsql.Csv;
 import jp.ats.atomsql.Sandbox;
 import jp.ats.atomsql.annotation.DataObject;
 import jp.ats.atomsql.annotation.Sql;
-import jp.ats.atomsql.annotation.SqlParameters;
 import jp.ats.atomsql.annotation.SqlProxy;
 
 public class Demo04 {
@@ -73,11 +72,9 @@ public class Demo04 {
 		List<DataObjectImpl> selectByIds(Csv<Long> ids);
 
 		@Sql("SELECT * FROM customer WHERE id IN (:ids/*CSV<LONG>*/) AND name LIKE :name/*STRING*/")
-		@SqlParameters
 		List<DataObjectImpl> select(Consumer<Demo04Parameters1> params);
 
 		@Sql("SELECT * FROM customer WHERE id IN (:ids) AND name LIKE :name")
-		@SqlParameters
 		List<DataObjectImpl> dynamicTypeDecision(Consumer<Demo04Parameters2> params);
 
 		@DataObject

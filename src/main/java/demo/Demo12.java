@@ -7,7 +7,6 @@ import jp.ats.atomsql.AtomSql;
 import jp.ats.atomsql.Sandbox;
 import jp.ats.atomsql.annotation.AtomSqlSupplier;
 import jp.ats.atomsql.annotation.Sql;
-import jp.ats.atomsql.annotation.SqlParameters;
 import jp.ats.atomsql.annotation.SqlProxy;
 import jp.ats.atomsql.annotation.SqlProxySupplier;
 
@@ -67,7 +66,6 @@ INSERT INTO customer VALUES (
 	:cellular/*STRING*/,
 	:created/*DATETIME*/)
 		"""/*@formatter:on*/)
-		@SqlParameters
 		int insert(Consumer<Demo12Parameters> c);
 
 		@AtomSqlSupplier

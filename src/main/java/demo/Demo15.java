@@ -1,10 +1,9 @@
 package demo;
 
 import jp.ats.atomsql.Atom;
-import jp.ats.atomsql.HalfAtom;
+import jp.ats.atomsql.Prototype;
 import jp.ats.atomsql.Sandbox;
 import jp.ats.atomsql.annotation.Sql;
-import jp.ats.atomsql.annotation.SqlInterpolation;
 import jp.ats.atomsql.annotation.SqlProxy;
 
 public class Demo15 {
@@ -33,8 +32,7 @@ INSERT INTO customer VALUES (
 /*${created_at}*/
 )
 		"""/*@formatter:on*/)
-		@SqlInterpolation
-		HalfAtom<?, Demo15_Proxy_insert> insert();
+		Prototype<?, Demo15_Proxy_insert> insert();
 
 		@Sql("id")
 		Atom<?> forId();

@@ -5,7 +5,6 @@ import java.util.function.Consumer;
 
 import jp.ats.atomsql.Sandbox;
 import jp.ats.atomsql.annotation.Sql;
-import jp.ats.atomsql.annotation.SqlParameters;
 import jp.ats.atomsql.annotation.SqlProxy;
 
 public class Demo03 {
@@ -49,7 +48,6 @@ INSERT INTO customer VALUES (
 	:cellular/*STRING*/,
 	:created/*DATETIME*/)
 		"""/*@formatter:on*/)
-		@SqlParameters
 		int insert(Consumer<Demo03Parameters> c);
 	}
 }

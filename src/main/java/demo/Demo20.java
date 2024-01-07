@@ -3,10 +3,9 @@ package demo;
 import java.util.List;
 
 import jp.ats.atomsql.Atom;
-import jp.ats.atomsql.HalfAtom;
+import jp.ats.atomsql.Prototype;
 import jp.ats.atomsql.Sandbox;
 import jp.ats.atomsql.annotation.Sql;
-import jp.ats.atomsql.annotation.SqlInterpolation;
 import jp.ats.atomsql.annotation.SqlProxy;
 
 public class Demo20 {
@@ -39,7 +38,6 @@ public class Demo20 {
 		Atom<Integer> select2();
 
 		@Sql("SELECT 1 FROM customer /*${select}*/")
-		@SqlInterpolation
-		HalfAtom<Integer, I1> select3();
+		Prototype<Integer, Demo20_I1> select3();
 	}
 }

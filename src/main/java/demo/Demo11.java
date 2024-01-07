@@ -6,7 +6,6 @@ import java.util.function.Consumer;
 import jp.ats.atomsql.Atom;
 import jp.ats.atomsql.Sandbox;
 import jp.ats.atomsql.annotation.Sql;
-import jp.ats.atomsql.annotation.SqlParameters;
 import jp.ats.atomsql.annotation.SqlProxy;
 
 public class Demo11 {
@@ -58,7 +57,6 @@ UPDATE customer SET
 	/*${0}*/
 	created = :created/*DATETIME*/)
 		"""/*@formatter:on*/)
-		@SqlParameters
 		Atom<?> update(Consumer<Demo11ParametersMain> c);
 
 		@Sql(/*@formatter:off*/"""
@@ -71,7 +69,6 @@ UPDATE customer SET
 	cellular = :cellular/*STRING*/,
 	memo = :マルチバイト文字/*STRING*/,
 		"""/*@formatter:on*/)
-		@SqlParameters
 		Atom<?> addrAndTel(Consumer<Demo11ParametersSub> c);
 	}
 }

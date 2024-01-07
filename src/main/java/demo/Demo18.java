@@ -7,7 +7,6 @@ import java.util.function.Consumer;
 import jp.ats.atomsql.Sandbox;
 import jp.ats.atomsql.annotation.DataObject;
 import jp.ats.atomsql.annotation.Sql;
-import jp.ats.atomsql.annotation.SqlParameters;
 import jp.ats.atomsql.annotation.SqlProxy;
 
 public class Demo18 {
@@ -46,7 +45,6 @@ public class Demo18 {
 		int insert(Long id, String name, LocalDateTime created);
 
 		@Sql("INSERT INTO customer (id, name, created) VALUES (:id, :name, :created)")
-		@SqlParameters
 		int insert(Consumer<Demo18_P1> c);
 
 		@DataObject

@@ -4,11 +4,10 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import jp.ats.atomsql.Atom;
-import jp.ats.atomsql.HalfAtom;
+import jp.ats.atomsql.Prototype;
 import jp.ats.atomsql.Sandbox;
 import jp.ats.atomsql.annotation.DataObject;
 import jp.ats.atomsql.annotation.Sql;
-import jp.ats.atomsql.annotation.SqlInterpolation;
 import jp.ats.atomsql.annotation.SqlProxy;
 
 public class Demo16 {
@@ -45,8 +44,7 @@ public class Demo16 {
 		@Sql(/*@formatter:off*/"""
 SELECT * FROM customer WHERE /*${id}*/ AND /*${name}*/ AND /*${created_at}*/
 		"""/*@formatter:on*/)
-		@SqlInterpolation
-		HalfAtom<DataObjectImpl, Demo16_Proxy_select> select();
+		Prototype<DataObjectImpl, Demo16_Proxy_select> select();
 
 		@Sql("id = :id")
 		Atom<?> forId(long id);
