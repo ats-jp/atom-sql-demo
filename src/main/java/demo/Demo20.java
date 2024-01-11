@@ -38,6 +38,6 @@ public class Demo20 {
 		Atom<Integer> select2();
 
 		@Sql("SELECT 1 FROM customer /*${select}*/")
-		Prototype<Integer, Demo20_I1> select3();
+		Prototype<Integer, Demo20_Proxy_select3> select3();
 	}
 }
