@@ -1,6 +1,7 @@
 package demo;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 import jp.ats.atomsql.Atom;
 import jp.ats.atomsql.Prototype;
@@ -24,7 +25,7 @@ public class Demo20 {
 
 			proxy.select2().list().forEach(System.out::println);
 
-			proxy.select3().put(i -> i.select = proxy.select2()).list().forEach(System.out::println);
+			proxy.select3(p -> p.id = 1).put(i -> i.select = proxy.select2()).list().forEach(System.out::println);
 		});
 	}
 
@@ -37,7 +38,7 @@ public class Demo20 {
 		@Sql("SELECT 1 FROM customer")
 		Atom<Integer> select2();
 
-		@Sql("SELECT 1 FROM customer /*${select}*/")
-		Prototype<Integer, Demo20_Proxy_select3> select3();
+		@Sql("SELECT 1 FROM customer /*${select}*/ WHERE id = :id")
+		Prototype<Integer, Demo20_Proxy_select3> select3(Consumer<Demo20_Proxy_select4> c);
 	}
 }

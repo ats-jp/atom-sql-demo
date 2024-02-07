@@ -6,6 +6,8 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 import jp.ats.atomsql.Atom;
+import jp.ats.atomsql.Csv;
+import jp.ats.atomsql.NonThreadSafeException;
 import jp.ats.atomsql.Sandbox;
 import jp.ats.atomsql.annotation.DataObject;
 import jp.ats.atomsql.annotation.Sql;
@@ -27,6 +29,22 @@ public class Demo02 {
 			proxy.selectById(999);
 
 			proxy.insert(999, "demo customer", LocalDateTime.now());
+
+			try {
+				proxy.selectById(new byte[] { 0 });
+			} catch (NonThreadSafeException e) {
+				System.out.println(e.getMessage());
+			}
+
+			atomSql.tryNonThreadSafe(() -> proxy.selectById(new byte[] { 0 }));
+
+			try {
+				proxy.selectByCsv(Csv.of(new Object()));
+			} catch (NonThreadSafeException e) {
+				System.out.println(e.getMessage());
+			}
+
+			atomSql.tryNonThreadSafe(() -> proxy.selectByCsv(Csv.of(new Object())));
 		});
 	}
 
@@ -47,6 +65,12 @@ public class Demo02 {
 
 		@Sql("INSERT INTO customer (id, name, created) VALUES (:id, :name, :created)")
 		int insert(long id, String name, LocalDateTime created);
+
+		@Sql("SELECT * FROM customer WHERE id = :id")
+		Optional<DataObjectImpl> selectById(byte[] id);
+
+		@Sql("SELECT * FROM customer WHERE id = :csv")
+		Optional<DataObjectImpl> selectByCsv(Csv<Object> csv);
 
 		@DataObject
 		public static class DataObjectImpl {

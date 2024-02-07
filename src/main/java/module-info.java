@@ -1,4 +1,4 @@
-module jp.ats.atomsql.demo {
+module atomsql.demo {
 
 	requires transitive jp.ats.atomsql;
 
