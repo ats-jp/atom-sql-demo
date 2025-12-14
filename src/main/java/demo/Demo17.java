@@ -1,17 +1,13 @@
 package demo;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 import jp.ats.atomsql.AtomSql;
-import jp.ats.atomsql.AtomSqlType;
 import jp.ats.atomsql.Csv;
 import jp.ats.atomsql.Sandbox;
-import jp.ats.atomsql.annotation.AtomSqlSupplier;
 import jp.ats.atomsql.annotation.Sql;
 import jp.ats.atomsql.annotation.SqlProxy;
-import jp.ats.atomsql.annotation.SqlProxySupplier;
-import jp.ats.atomsql.annotation.TypeHint;
-import jp.ats.atomsql.annotation.TypeHints;
 
 public class Demo17 {
 
@@ -19,13 +15,13 @@ public class Demo17 {
 		Sandbox.execute(atomSql -> {
 			var proxy = atomSql.of(Proxy.class);
 
-			proxy.atomSql().of(Proxy.class).insert(p -> {
+			proxy.atomSql().of(Proxy.class).select(p -> {
 				p.name = "name";
 				p.ids = Csv.of(1L, 2L, 3L);
 				p.names = Csv.of("name1", "name2");
 			});
 
-			proxy.proxy().insert(p -> {
+			proxy.proxy().select(p -> {
 				p.name = "name";
 				p.ids = Csv.of(1L, 2L, 3L);
 				p.names = Csv.of("name1", "name2");
@@ -36,18 +32,11 @@ public class Demo17 {
 	@SqlProxy
 	public interface Proxy {
 
-		@Sql("UPDATE customer SET name = :name WHERE id IN (:ids) AND name IN (:names)")
-		@TypeHints({
-			@TypeHint(name = "name", type = AtomSqlType.STRING),
-			@TypeHint(name = "ids", type = AtomSqlType.CSV, typeArgument = AtomSqlType.P_LONG),
-			@TypeHint(name = "names", type = AtomSqlType.CSV, typeArgument = AtomSqlType.STRING)
-		})
-		void insert(Consumer<Demo17Parameters> c);
+		@Sql("SELECT 1 FROM test WHERE  name = :name/*STRING*/ AND id IN (:ids/*CSV<P_LONG>*/) AND name IN (:names/*CSV<STRING>*/)")
+		List<Integer> select(Consumer<Demo17Parameters> c);
 
-		@AtomSqlSupplier
 		AtomSql atomSql();
 
-		@SqlProxySupplier
 		Proxy proxy();
 	}
 }

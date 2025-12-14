@@ -21,7 +21,7 @@ public class Demo11 {
 				p.companyId = null;
 				p.postalCode = "000-0000";
 				p.created = LocalDateTime.now();
-			}).update();
+			}).execute();
 
 			var addrAndTel = proxy.addrAndTel(p -> {
 				p.addr1 = "addr1";
@@ -40,7 +40,7 @@ public class Demo11 {
 				p.companyId = null;
 				p.postalCode = "000-0000";
 				p.created = LocalDateTime.now();
-			}).put(addrAndTel).update();
+			}).put(addrAndTel).execute();
 		});
 	}
 

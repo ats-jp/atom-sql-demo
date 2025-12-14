@@ -10,8 +10,6 @@ import jp.ats.atomsql.annotation.DataObject;
 import jp.ats.atomsql.annotation.EnumValue;
 import jp.ats.atomsql.annotation.Sql;
 import jp.ats.atomsql.annotation.SqlProxy;
-import jp.ats.atomsql.annotation.TypeHint;
-import jp.ats.atomsql.annotation.TypeHints;
 
 public class Demo19 {
 
@@ -30,11 +28,6 @@ public class Demo19 {
 			proxy.selectByParameters(p -> p.type = null);
 
 			proxy.selectByCsv(p -> p.types = Csv.of(Enum1.CONST1));
-
-			proxy.selectWithHint(p -> {
-				p.type = Enum1.CONST1;
-				p.csv = Csv.of(Enum1.CONST1, Enum1.CONST3);
-			});
 
 			Sandbox.resultSet(r -> {
 				r.setColumnNames("e1", "e2");
@@ -88,13 +81,6 @@ public class Demo19 {
 
 		@Sql("SELECT * FROM customer WHERE type IN (:types/*CSV<Demo19.Enum1>*/)")
 		List<DataObjectImpl> selectByCsv(Consumer<Demo19_P2> c);
-
-		@Sql("SELECT * FROM customer WHERE type = :type AND csv IN :csv")
-		@TypeHints({
-			@TypeHint(name = "type", type = "Demo19.Enum1"),
-			@TypeHint(name = "csv", type = "CSV", typeArgument = "Demo19.Enum1"),
-		})
-		List<DataObjectImpl> selectWithHint(Consumer<Demo19_P3> c);
 
 		@DataObject
 		public static class DataObjectImpl {

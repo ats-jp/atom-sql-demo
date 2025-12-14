@@ -13,7 +13,7 @@ public class Demo14 {
 
 			var main = proxy.insert();
 
-			main.put(proxy.for0(), proxy.for1()).put("last", proxy.forLast()).update();
+			main.put(proxy.for0(), proxy.for1()).put("last", proxy.forLast()).execute();
 		});
 	}
 

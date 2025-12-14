@@ -5,10 +5,8 @@ import java.util.function.Consumer;
 
 import jp.ats.atomsql.AtomSql;
 import jp.ats.atomsql.Sandbox;
-import jp.ats.atomsql.annotation.AtomSqlSupplier;
 import jp.ats.atomsql.annotation.Sql;
 import jp.ats.atomsql.annotation.SqlProxy;
-import jp.ats.atomsql.annotation.SqlProxySupplier;
 
 public class Demo12 {
 
@@ -68,10 +66,8 @@ INSERT INTO customer VALUES (
 		"""/*@formatter:on*/)
 		int insert(Consumer<Demo12Parameters> c);
 
-		@AtomSqlSupplier
 		AtomSql atomSql();
 
-		@SqlProxySupplier
 		Proxy proxy();
 	}
 }

@@ -1,7 +1,7 @@
 package demo;
 
 import jp.ats.atomsql.Atom;
-import jp.ats.atomsql.Prototype;
+import jp.ats.atomsql.Protoatom;
 import jp.ats.atomsql.Sandbox;
 import jp.ats.atomsql.annotation.Sql;
 import jp.ats.atomsql.annotation.SqlProxy;
@@ -18,7 +18,7 @@ public class Demo15 {
 				a.id = proxy.forId();
 				a.name = proxy.forName();
 				a.created_at = proxy.forCreatedAt();
-			}).update();
+			}).execute();
 		});
 	}
 
@@ -32,7 +32,7 @@ INSERT INTO customer VALUES (
 /*${created_at}*/
 )
 		"""/*@formatter:on*/)
-		Prototype<?, Demo15_Proxy_insert> insert();
+		Protoatom<?, Demo15_Proxy_insert> insert();
 
 		@Sql("id")
 		Atom<?> forId();

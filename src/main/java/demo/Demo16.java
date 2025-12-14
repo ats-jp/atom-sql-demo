@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import jp.ats.atomsql.Atom;
-import jp.ats.atomsql.Prototype;
+import jp.ats.atomsql.Protoatom;
 import jp.ats.atomsql.Sandbox;
 import jp.ats.atomsql.annotation.DataObject;
 import jp.ats.atomsql.annotation.Sql;
@@ -44,7 +44,7 @@ public class Demo16 {
 		@Sql(/*@formatter:off*/"""
 SELECT * FROM customer WHERE /*${id}*/ AND /*${name}*/ AND /*${created_at}*/
 		"""/*@formatter:on*/)
-		Prototype<DataObjectImpl, Demo16_Proxy_select> select();
+		Protoatom<DataObjectImpl, Demo16_Proxy_select> select();
 
 		@Sql("id = :id")
 		Atom<?> forId(long id);

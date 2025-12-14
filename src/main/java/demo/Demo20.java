@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import jp.ats.atomsql.Atom;
-import jp.ats.atomsql.Prototype;
+import jp.ats.atomsql.Protoatom;
 import jp.ats.atomsql.Sandbox;
 import jp.ats.atomsql.annotation.Sql;
 import jp.ats.atomsql.annotation.SqlProxy;
@@ -39,6 +39,6 @@ public class Demo20 {
 		Atom<Integer> select2();
 
 		@Sql("SELECT 1 FROM customer /*${select}*/ WHERE id = :id")
-		Prototype<Integer, Demo20_Proxy_select3> select3(Consumer<Demo20_Proxy_select4> c);
+		Protoatom<Integer, Demo20_Proxy_select3> select3(Consumer<Demo20_Proxy_select4> c);
 	}
 }
